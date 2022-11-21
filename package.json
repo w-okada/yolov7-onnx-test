@@ -1,0 +1,24 @@
+{
+  "name": "yolo-onnx-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:docker": "DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile -t yolo-onnx-test docker/",
+    "export:yolov7": "docker run -ti -w /yolov7 -v `pwd`/models:/models yolo-onnx-test bash export_yolov7_to_onnx.sh",
+    "run:yolov7_onnx": "docker run -ti -w /yolov7 -v `pwd`/models:/models -v `pwd`/data:/data yolo-onnx-test python3 run_yolov7_onnx.py",
+    "run:yolov7_onnx_pinto": "docker run -ti -w /yolov7 -v `pwd`/models:/models -v `pwd`/data:/data yolo-onnx-test python3 run_yolov7_onnx_pinto.py",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w-okada/yolo-onnx-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/w-okada/yolo-onnx-test/issues"
+  },
+  "homepage": "https://github.com/w-okada/yolo-onnx-test#readme"
+}
