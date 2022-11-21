@@ -1,10 +1,9 @@
-YOLO-ONNX-TEST
+YOLOv7-ONNX-TEST
 ----
 This repository is intended only to evaluate the performance of the yolov7 onnx model. 
 Model type is only Tiny.
 
 1. python onnx (cpu)
-
 
 # Prerequisite
 This repository use docker.
@@ -23,6 +22,7 @@ print(img_size, 'fin. avr time:', (elapsed_time / 10) * 1000, "msec")
 
 ```
 ## Result
+Result on  "Intel(R) Core(TM) i9-9900KF CPU @ 3.60GHz"
 
 | Size      | from       | python onnx (cpu) |
 | --------- | ---------- | ----------------- |
