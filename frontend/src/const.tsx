@@ -1,0 +1,6 @@
+export const TARGET_VIDEO_ID = "target-video"
+export const TARGET_IMAGE_ID = "target-image"
+export const TARGET_CANVAS_ID = "target-canvas"
+export const TEMPORARY_CANVAS_ID = "temporary-canvas"
+export const PERFORMANCE_ALL_SPAN = "performance-all-canvas"
+export const PERFORMANCE_INFER_SPAN = "performance-infer-canvas"

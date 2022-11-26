@@ -60,7 +60,7 @@ img_sizes = ["416x416", "320x320", "640x640", "1280x1280", "1920x1920",
 for num, img_size in enumerate(img_sizes):
     print("Processing,,, IMAGE_SIZE:", img_size)
     h, w = img_size.split("x")
-    model_path = f"/models/yolov7-tiny-{img_size}.onnx"
+    model_path = f"/models/yolov7_tiny_{img_size}.onnx"
     img = cv2.imread('/data/D0002011239_00000.jpg')
 
     providers = ['CPUExecutionProvider']
@@ -109,7 +109,7 @@ img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 for num, img_size in enumerate(img_sizes):
     print("Perfromacne,,, IMAGE_SIZE:", img_size)
     h, w = img_size.split("x")
-    model_path = f"/models/yolov7-tiny-{img_size}.onnx"
+    model_path = f"/models/yolov7_tiny_{img_size}.onnx"
 
     providers = ['CPUExecutionProvider']
     session = ort.InferenceSession(model_path, providers=providers)
