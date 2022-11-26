@@ -1,5 +1,5 @@
 {
-  "name": "yolo-onnx-test",
+  "name": "yolov7-onnx-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/w-okada/yolo-onnx-test.git"
+    "url": "git+https://github.com/w-okada/yolov7-onnx-test.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/w-okada/yolo-onnx-test/issues"
+    "url": "https://github.com/w-okada/yolov7-onnx-test/issues"
   },
-  "homepage": "https://github.com/w-okada/yolo-onnx-test#readme"
+  "homepage": "https://github.com/w-okada/yolov7-onnx-test#readme"
 }

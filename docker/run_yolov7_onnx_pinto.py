@@ -88,26 +88,45 @@ for num, img_size in enumerate(img_sizes):
 # elapsed_time = time.time() - start_time
 # print('fin. avr time:', (elapsed_time / 10) * 1000, "msec")
 
-    scores = outputs[0]
-    rect = outputs[1]
-
     ori_images = [img.copy()]
 
-    for i, (batch_id, cls_id, y0, x0, y1, x1) in enumerate(rect):
-        image = ori_images[int(batch_id)]
-        box = np.array([float(x0), float(y0), float(x1), float(y1)])
-        box -= np.array(dwdh*2)
-        box /= ratio
-        box = box.round().astype(np.int32).tolist()
-        cls_id = int(cls_id)
-        score = scores[i][0]
-        score = round(score, 3)
-        name = names[cls_id]
-        color = colors[name]
-        name += ' '+str(score)
-        cv2.rectangle(image, box[:2], box[2:], color, 2)
-        cv2.putText(image, name, (box[0], box[1] - 2),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.75, [225, 255, 255], thickness=2)
+    if img_size[0] == 256 and img_size[1] == 320:
+        scores = outputs[0]
+        rect = outputs[1]
+        for i, (batch_id, cls_id, y0, x0, y1, x1) in enumerate(rect):
+            image = ori_images[int(batch_id)]
+            box = np.array([float(x0), float(y0), float(x1), float(y1)])
+            box -= np.array(dwdh*2)
+            box /= ratio
+            box = box.round().astype(np.int32).tolist()
+            cls_id = int(cls_id)
+            score = scores[i][0]
+            score = round(score, 3)
+            name = names[cls_id]
+            color = colors[name]
+            name += ' '+str(score)
+            cv2.rectangle(image, box[:2], box[2:], color, 2)
+            cv2.putText(image, name, (box[0], box[1] - 2),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.75, [225, 255, 255], thickness=2)
+
+    else:
+        scores = outputs[0]
+        rect = outputs[1]
+        for i, (batch_id, cls_id, y0, x0, y1, x1) in enumerate(rect):
+            image = ori_images[int(batch_id)]
+            box = np.array([float(x0), float(y0), float(x1), float(y1)])
+            box -= np.array(dwdh*2)
+            box /= ratio
+            box = box.round().astype(np.int32).tolist()
+            cls_id = int(cls_id)
+            score = scores[i][0]
+            score = round(score, 3)
+            name = names[cls_id]
+            color = colors[name]
+            name += ' '+str(score)
+            cv2.rectangle(image, box[:2], box[2:], color, 2)
+            cv2.putText(image, name, (box[0], box[1] - 2),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.75, [225, 255, 255], thickness=2)
     cv2.imwrite(
         f"/data/output/yolov7-onnx-pinto-{img_size[0]}-{img_size[1]}.jpg", image)
 

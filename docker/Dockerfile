@@ -5,9 +5,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y \
     python3-pip \
-    # protobuf-compiler \
-    # cmake \
-    # libgl1-mesa-dev \
     git \
     curl \
     wget \
@@ -27,6 +24,13 @@ RUN pip install pyyaml
 RUN pip install matplotlib
 RUN pip install seaborn
 RUN pip install scipy
+RUN pip install onnx2tf
+RUN pip install tensorflow
+RUN pip install tensorflowjs
+RUN pip install nvidia-pyindex
+RUN pip install onnx-graphsurgeon
+RUN pip install sng4onnx
+
 
 RUN git clone --depth 1 https://github.com/WongKinYiu/yolov7 
 

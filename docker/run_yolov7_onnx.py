@@ -52,22 +52,24 @@ names = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', '
 colors = {name: [random.randint(0, 255) for _ in range(3)]
           for i, name in enumerate(names)}
 
-img_sizes = [320, 640, 1280, 1920]
+img_sizes = ["416x416", "320x320", "640x640", "1280x1280", "1920x1920",
+             "256x320", "256x480", "256x640", "384x640", "480x640", "736x1280", "1088x1920"]
+#img_sizes = ["416x416"]
 
 # Execute detect object
 for num, img_size in enumerate(img_sizes):
     print("Processing,,, IMAGE_SIZE:", img_size)
-
-    w = f"/models/yolov7-tiny-{img_size}.onnx"
+    h, w = img_size.split("x")
+    model_path = f"/models/yolov7-tiny-{img_size}.onnx"
     img = cv2.imread('/data/D0002011239_00000.jpg')
 
     providers = ['CPUExecutionProvider']
-    session = ort.InferenceSession(w, providers=providers)
+    session = ort.InferenceSession(model_path, providers=providers)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     image = img.copy()
     image, ratio, dwdh = letterbox(
-        image, new_shape=(img_size, img_size), auto=False)
+        image, new_shape=(int(h), int(w)), auto=False)
     image = image.transpose((2, 0, 1))
     image = np.expand_dims(image, 0)
     image = np.ascontiguousarray(image)
@@ -106,14 +108,15 @@ img = cv2.imread('/data/D0002011239_00000.jpg')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 for num, img_size in enumerate(img_sizes):
     print("Perfromacne,,, IMAGE_SIZE:", img_size)
-    w = f"/models/yolov7-tiny-{img_size}.onnx"
+    h, w = img_size.split("x")
+    model_path = f"/models/yolov7-tiny-{img_size}.onnx"
 
     providers = ['CPUExecutionProvider']
-    session = ort.InferenceSession(w, providers=providers)
+    session = ort.InferenceSession(model_path, providers=providers)
 
     image = img.copy()
     image, ratio, dwdh = letterbox(
-        image, new_shape=(img_size, img_size), auto=False)
+        image, new_shape=(int(h), int(w)), auto=False)
     image = image.transpose((2, 0, 1))
     image = np.expand_dims(image, 0)
     image = np.ascontiguousarray(image)
