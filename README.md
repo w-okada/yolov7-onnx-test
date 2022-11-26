@@ -64,6 +64,11 @@ $ npm run run:yolov7_onnx_pinto
 ```
 Wait for a while. Then you can see the output on the termianl.
 
+## Misc
+[web demo](https://w-okada.github.io/yolov7-onnx-test/) only for onnx.
+
+for tfjs is under construction. (stacked. technical problem occured.)
+
 # Reference
 1. https://github.com/WongKinYiu/yolov7
 1. https://github.com/PINTO0309/PINTO_model_zoo/tree/main/307_YOLOv7
